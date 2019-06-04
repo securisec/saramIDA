@@ -9,6 +9,7 @@ deploy:
   file: "./saramIDA.zip"
   on:
     tag: true
+    repo: securisec/saramIDA
 notifications:
   slack:
     rooms:
