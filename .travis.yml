@@ -1,15 +1,14 @@
 script:
-  - zip -x \*.git\* -x README.md -x .gitignore -x saramida.png -r  saramIDA.zip .
-  - ls -l
-
+- zip -x \*.git\* -x README.md -x .gitignore -x saramida.png -r  saramIDA.zip .
+- ls -l
 deploy:
   provider: releases
   skip_cleanup: true
   api_key:
-    secure: qUJ7fpBXrgja7xX0nGLtvCU/3kuBA8MnWonRPsG+lYzC1yTmBnncIQhn1lw3kO+GIUUPNEmy2cZE+Rx8j5d+5WTqZl+AfXxEkGSEmKtPC0lAe4+4+4JN0Oz/VSqqgzkqatXiuPjtMoRf4NxicSE+4dzrWfS6le5grqfj9Fkdijlhq3d3NneSyxSmu65wgH7+8Qtnb+fNh1+YRTSjzzRUefs38xwz7Is6I+f6Yrgfn7YDjQQRgcGnwa5HqXexoXvKWTLe3A+ZTemkA/k909JaDyXwO9ULTg6tQBmzApo/Ml/POOuYCBEoke0re0rNMZH0axgNOtjxcoSmJRw92xRYK2qRooCQ4/P6zZHL8wmMp3pX8TPrtZRPAbxh7Tbcqs5C8NoClUF/BlXevDGLNIT5NK9jmSRjd0RJqzqOWwHSxquFcvA73gWM+UXbTy6hTJz6oGScrWhsgsXbnHvZvpPme6aKrCv+aafzEjoghfAnJ7X5f0zS9Ld+PbUOu5dimql7eeax1Jf/WiwA4LkBq9XVKPjnsGYWWyTOSXeD6Ut0ja6tTN9BsC2SFcZgQx8LrxjCF8HYag3E1Rpi6ilRlnap7fhkUjgNHuf9lDgTKW3K2cRqlnJwLlbpz4runj+3+znUV8JkTPomOZytktncTkaVOASnzlOoMI9Bn4nPFDfERAQ=
+    secure: EqD5ipDZ1cYYR8wNqbsXPy7ro5ppTOWAibldw9Qr0WV62/yM8rsk5NJNdSuHpUxYFDZC+G/OdxeWPN6b1x5eRC+pEEvx8wQEQgWflAzn07rpRqu+Vzq+Us8ZdeNvFOneHCtWJ3lhHKy8oyoQGu35lnC2zb3IwtSQMjahxkrdPr/0pzv8i+mclslYX2Rx6Q/eHPBthVfNUSn8tiV2W44PsKbb8EUNhfNkigNqImt6raxJ4NZUIm2HgwpnKgmIWg7JNt9RUg6F+arwW8Sc6pkld250AsO6LkYmV05dlG8MYYtHwe5e72+eEWTIoAUsT8nm/VplaJDrsiNBnwdEIqIJXBpWrIXXdVpQiivjYTlJPJvNus/uYAAiSrYAlm41WWryfh70h3BKq9sGLnaq15vOJOfyjMSAdqZGOh3GNhbhNDjPimmkYMObfd/lnF1RQck61zLBC9l+pVOvQBMRjgm9ePP+vT3Cjwjg5I44YlB3taokQPDNEYflmOR/KjStZY5/BqMgZhANsWBxMJk3canZcacOcQ1xn+j/VoxxW+IX4FHJ7iOBxSlQkeSCZvYlSoGzZtQp3VaLZUzgvSQjYF1z7jQtFV2i4Re6fqgaWCErZ2NVkaVIMlaFsWSTnwSRsPaWy0bkzzhmZMYq1DYFr8iHf/tEWwFV461OtAPO8P0W49k=
   file: "./saramIDA.zip"
   on:
-    tag: true
+    tags: true
 notifications:
   slack:
     rooms:
