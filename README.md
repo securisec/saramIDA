@@ -8,7 +8,7 @@ This is the IDA Pro plugin for Saram. It has been tested on IDA v7 and is writte
 This plugin is designed to be run from within the python interpretor of IDA itself.
 
 ## Installation
-Clone this repository in your local IDA plugins directory. In the case of Linux or OSX, this is the `~/.idapro/plugins/` directory. 
+Download and unzip one of the releases in your local IDA plugins directory. In the case of Linux or OSX, this is the `~/.idapro/plugins/` directory. 
 
 Once cloned, the directory structure should look like this:
 ```
@@ -34,3 +34,5 @@ Presently, the following methods are available:
 - decompile_function *Gets the decomplied code from a function*
 - get_strings *Gets all the strings in a binary*
 - function_comments *Get all user comments from a function*
+- get_functions *Get a list of all the functions in the binary*
+- any_ida_function *This method is unique and takes an ida function as a callback argument*

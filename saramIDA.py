@@ -80,6 +80,32 @@ class SaramIDA(idaapi.plugin_t):
         print(self.output)
         return self
 
+    def get_functions(self):
+        """
+        Get all functions from the binary
+
+        >>> saram.get_functions().send()
+        """
+        self._comment = inspect.stack()[0][3]
+        self.command = 'All functions'
+        functions = []
+        for f_offset in idautils.Functions():
+            name = idc.GetFunctionName(f_offset)
+            offset = hex(f_offset)
+            functions.append('{offset}\t{name}'.format(
+                offset=offset, name=name))
+        self.output = '\n'.join(functions)
+        print(self.output)
+        return self
+
+    def get_imports(self):
+        # TODO
+        raise NotImplementedError
+
+    def get_exports(self):
+        # TODO
+        raise NotImplementedError
+
     def function_comments(self):
         """
         Get all user comments from the function
@@ -105,6 +131,28 @@ class SaramIDA(idaapi.plugin_t):
             return self
         else:
             raise TypeError('No comments found')
+
+    def any_ida_function(self, ida_function):
+        """
+        This method lets the user pass an ida function as a callback, 
+        and this callback is then executed and the output is sent to the 
+        Saram server
+
+        :param ida_function: Any ida python api related function
+        :type ida_function: function
+
+        >>> saram.any_ida_function(ScreenEA).send()
+        >>> # in this example, we are passing the ScreenEA function as a parameter
+        >>> # Note that there are no () after ScreenEA. It is being used as a callback function
+        """
+        self._comment = inspect.stack()[0][3]
+        try:
+            self.output = ida_function()
+            self.command = 'Output of {}'.format(str(ida_function))
+            print(self.output)
+            return self
+        except:
+            print('Error')
 
 
 def PLUGIN_ENTRY():

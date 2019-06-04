@@ -11,14 +11,18 @@ for an entry.
 import json
 import urllib2
 from os.path import expanduser
-
+import os
 
 try:
-    conf_file_path = expanduser('~') + '/.saram.conf'
+    if os.name == 'nt':
+        _home_dir = os.environ['HOME']
+        conf_file_path = _home_dir + '\\.saram.conf'
+    else:
+        conf_file_path = expanduser('~') + '/.saram.conf'
     with open(conf_file_path, 'r') as confFile:
         saram_conf = json.load(confFile)
 except IOError:
-    print('Cannot find ~/.saram.conf file')
+    print('Cannot find .saram.conf file')
     exit()
 
 def saram_headers():
